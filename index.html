@@ -23,11 +23,17 @@
   .card p { margin:0; font-size:14px; line-height:1.5; }
   .badge { display:inline-block; color:#fff; padding:2px 10px; border-radius:12px; font-size:12px; font-weight:600; }
   .badge.Baixo{background:var(--baixo)} .badge.Moderado{background:var(--moderado)} .badge.Alto{background:var(--alto)} .badge.Extremo{background:var(--extremo)}
-  .swot-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  @media (max-width:600px){ .swot-grid{grid-template-columns:1fr;} }
-  .swot-col h3 { margin:0 0 8px; }
-  .swot-col ul { margin:0; padding-left:18px; font-size:14px; }
-  .swot-col.forca h3{color:var(--baixo)} .swot-col.fraqueza h3{color:var(--alto)} .swot-col.oportunidade h3{color:#1565c0} .swot-col.ameaca h3{color:var(--extremo)}
+  .swot-matriz { display:grid; grid-template-columns:90px 1fr 1fr; gap:14px; align-items:stretch; }
+  @media (max-width:600px){ .swot-matriz{grid-template-columns:1fr;} .swot-cabecalho-coluna,.swot-cabecalho-linha,.swot-celula-vazia{display:none;} }
+  .swot-cabecalho-coluna { font-weight:600; text-align:center; color:#444; align-self:end; padding-bottom:4px; }
+  .swot-cabecalho-linha { font-weight:600; color:#444; display:flex; align-items:center; justify-content:center; text-align:center; }
+  .swot-quadrante { border:2px solid; border-radius:10px; padding:14px; background:#fff; }
+  .swot-quadrante h3 { margin:0 0 8px; }
+  .swot-quadrante ul { margin:0; padding-left:18px; font-size:14px; }
+  .swot-quadrante.forca { border-color:var(--baixo); } .swot-quadrante.forca h3{color:var(--baixo)}
+  .swot-quadrante.fraqueza { border-color:var(--extremo); } .swot-quadrante.fraqueza h3{color:var(--extremo)}
+  .swot-quadrante.oportunidade { border-color:#1565c0; } .swot-quadrante.oportunidade h3{color:#1565c0}
+  .swot-quadrante.ameaca { border-color:var(--alto); } .swot-quadrante.ameaca h3{color:var(--alto)}
 
   table.matriz { border-collapse:collapse; margin:0 auto; }
   table.matriz th, table.matriz td { border:1px solid var(--borda); padding:10px; text-align:center; font-size:12px; min-width:58px; cursor:pointer; }
@@ -74,11 +80,16 @@
 
       <section id="sec-swot">
         <h2>Análise SWOT</h2>
-        <div class="swot-grid">
-          <div class="swot-col forca"><h3>Forças</h3><ul id="swot-Força"></ul></div>
-          <div class="swot-col fraqueza"><h3>Fraquezas</h3><ul id="swot-Fraqueza"></ul></div>
-          <div class="swot-col oportunidade"><h3>Oportunidades</h3><ul id="swot-Oportunidade"></ul></div>
-          <div class="swot-col ameaca"><h3>Ameaças</h3><ul id="swot-Ameaça"></ul></div>
+        <div class="swot-matriz">
+          <div class="swot-celula-vazia"></div>
+          <div class="swot-cabecalho-coluna">Fatores Positivos</div>
+          <div class="swot-cabecalho-coluna">Fatores Negativos</div>
+          <div class="swot-cabecalho-linha">Internos</div>
+          <div class="swot-quadrante forca"><h3>Forças</h3><ul id="swot-Força"></ul></div>
+          <div class="swot-quadrante fraqueza"><h3>Fraquezas</h3><ul id="swot-Fraqueza"></ul></div>
+          <div class="swot-cabecalho-linha">Externos</div>
+          <div class="swot-quadrante oportunidade"><h3>Oportunidades</h3><ul id="swot-Oportunidade"></ul></div>
+          <div class="swot-quadrante ameaca"><h3>Ameaças</h3><ul id="swot-Ameaça"></ul></div>
         </div>
       </section>
 
@@ -161,14 +172,26 @@
     });
   }
 
+  var CATEGORIAS_SWOT_POSITIVAS = ['Força', 'Oportunidade'];
+  var CATEGORIAS_SWOT_NEGATIVAS = ['Fraqueza', 'Ameaça'];
+
   function renderOE() {
     var html = dados.objetivos.map(function (oe) {
-      var swotHtml = (oe.swotRelacionado || []).map(function (s) {
-        return '<li><b>[' + escapeHtml(s.Categoria) + ']</b> ' + escapeHtml(s.Descricao) + '</li>';
-      }).join('');
+      var relacionados = oe.swotRelacionado || [];
+      var negativos = relacionados.filter(function (s) { return CATEGORIAS_SWOT_NEGATIVAS.indexOf(s.Categoria) !== -1; });
+      var positivos = relacionados.filter(function (s) { return CATEGORIAS_SWOT_POSITIVAS.indexOf(s.Categoria) !== -1; });
+      var swotHtml = '';
+      if (negativos.length) {
+        swotHtml += '<div style="margin-top:8px;font-size:13px;color:' + NIVEL_COR.Extremo + ';"><b>⚠ Atrapalham este objetivo:</b><ul style="margin:4px 0 0;padding-left:18px;">' +
+          negativos.map(function (s) { return '<li>[' + escapeHtml(s.Categoria) + '] ' + escapeHtml(s.Descricao) + '</li>'; }).join('') + '</ul></div>';
+      }
+      if (positivos.length) {
+        swotHtml += '<div style="margin-top:8px;font-size:13px;color:' + NIVEL_COR.Baixo + ';"><b>✓ Contribuem para este objetivo:</b><ul style="margin:4px 0 0;padding-left:18px;">' +
+          positivos.map(function (s) { return '<li>[' + escapeHtml(s.Categoria) + '] ' + escapeHtml(s.Descricao) + '</li>'; }).join('') + '</ul></div>';
+      }
       return '<div class="card"><h3>' + escapeHtml(oe.ID_OE) + '</h3><p>' + escapeHtml(oe.Descricao) + '</p>' +
         '<p style="margin-top:8px;">' + badge(oe.nivelRR) + ' &nbsp; ' + oe.countRiscos + ' risco(s) · Média RR ' + (Number(oe.mediaRR)||0).toFixed(1) + '</p>' +
-        (swotHtml ? '<div style="margin-top:8px;font-size:13px;"><b>SWOT relacionado:</b><ul style="margin:4px 0 0;padding-left:18px;">' + swotHtml + '</ul></div>' : '') +
+        swotHtml +
         '</div>';
     }).join('');
     document.getElementById('grid-oe').innerHTML = html;
