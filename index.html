@@ -1,325 +1,134 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gestão Baseada em Riscos — Departamento Administrativo EFLCH/UNIFESP</title>
-<style>
-  :root {
-    --azul: #0d47a1; --azul-claro: #e3f2fd; --borda: #d0d7de; --fundo: #f6f8fa; --texto: #1f2328;
-    --baixo:#2e7d32; --moderado:#f9a825; --alto:#ef6c00; --extremo:#c62828;
-  }
-  * { box-sizing: border-box; }
-  body { font-family: -apple-system,"Segoe UI",Roboto,Arial,sans-serif; margin:0; background:var(--fundo); color:var(--texto); }
-  header { background:var(--azul); color:#fff; padding:28px 20px; }
-  header h1 { margin:0 0 4px; font-size: clamp(20px, 3vw, 28px); }
-  header .sub { opacity:.85; font-size:13px; }
-  main { max-width:1100px; margin:0 auto; padding:24px 16px 60px; }
-  section { margin-bottom:36px; }
-  h2 { border-bottom:2px solid var(--azul); padding-bottom:6px; color:var(--azul); font-size:20px; }
-  .grid-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; }
-  .card { background:#fff; border:1px solid var(--borda); border-radius:10px; padding:16px; }
-  .card h3 { margin:0 0 8px; font-size:15px; color:var(--azul); }
-  .card p { margin:0; font-size:14px; line-height:1.5; }
-  .badge { display:inline-block; color:#fff; padding:2px 10px; border-radius:12px; font-size:12px; font-weight:600; }
-  .badge.Baixo{background:var(--baixo)} .badge.Moderado{background:var(--moderado)} .badge.Alto{background:var(--alto)} .badge.Extremo{background:var(--extremo)}
-  .swot-matriz { display:grid; grid-template-columns:90px 1fr 1fr; gap:14px; align-items:stretch; }
-  @media (max-width:600px){ .swot-matriz{grid-template-columns:1fr;} .swot-cabecalho-coluna,.swot-cabecalho-linha,.swot-celula-vazia{display:none;} }
-  .swot-cabecalho-coluna { font-weight:600; text-align:center; color:#444; align-self:end; padding-bottom:4px; }
-  .swot-cabecalho-linha { font-weight:600; color:#444; display:flex; align-items:center; justify-content:center; text-align:center; }
-  .swot-quadrante { border:2px solid; border-radius:10px; padding:14px; background:#fff; }
-  .swot-quadrante h3 { margin:0 0 8px; }
-  .swot-quadrante ul { margin:0; padding-left:18px; font-size:14px; }
-  .swot-quadrante.forca { border-color:var(--baixo); } .swot-quadrante.forca h3{color:var(--baixo)}
-  .swot-quadrante.fraqueza { border-color:var(--extremo); } .swot-quadrante.fraqueza h3{color:var(--extremo)}
-  .swot-quadrante.oportunidade { border-color:#1565c0; } .swot-quadrante.oportunidade h3{color:#1565c0}
-  .swot-quadrante.ameaca { border-color:var(--alto); } .swot-quadrante.ameaca h3{color:var(--alto)}
+/**
+ * GitHubExport.gs
+ * Compila os dados da planilha em um único JSON e publica no repositório
+ * GitHub (para consumo pelo index.html estático via GitHub Pages).
+ *
+ * Configuração necessária (Editor do Apps Script → Configurações do projeto
+ * → Propriedades do script):
+ *   GITHUB_TOKEN  - token fine-grained com permissão "Contents: Read and write"
+ *                   restrito ao repositório abaixo
+ *   GITHUB_OWNER  - ex.: mauriciooura-a11yke
+ *   GITHUB_REPO   - ex.: gbr-adm-gru
+ *   GITHUB_BRANCH - opcional, padrão "main"
+ *   GITHUB_PATH   - opcional, padrão "data.json"
+ */
 
-  table.matriz { border-collapse:collapse; margin:0 auto; }
-  table.matriz th, table.matriz td { border:1px solid var(--borda); padding:10px; text-align:center; font-size:12px; min-width:58px; cursor:pointer; }
-  table.matriz th { background:#fff; cursor:default; }
-  table.matriz td:hover { outline:2px solid var(--azul); }
-  table.matriz td.ativa { outline:3px solid var(--azul); }
+function compilarJSON_() {
+  var eixosPdi = sheetToObjects_('eixos_pdi').map(limparRow_).filter(function (o) { return o.Ativo !== false; });
+  var mvv = sheetToObjects_('mvv').map(limparRow_).filter(function (o) { return o.Ativo !== false; });
+  var swot = sheetToObjects_('swot').map(limparRow_).filter(function (o) { return o.Ativo !== false; });
+  var objetivosRaw = sheetToObjects_('objetivos').map(limparRow_).filter(function (o) { return o.Ativo !== false; });
+  var riscos = sheetToObjects_('riscos').map(limparRow_).filter(function (o) { return o.Ativo !== false; });
+  var riscosOE = sheetToObjects_('riscos_oe').map(limparRow_);
+  var swotOE = sheetToObjects_('swot_oe').map(limparRow_);
+  var mvvOE = sheetToObjects_('mvv_oe').map(limparRow_);
+  var mvvEixo = sheetToObjects_('mvv_eixo_pdi').map(limparRow_);
+  var planoAcao = sheetToObjects_('plano_acao').map(limparRow_).filter(function (o) { return o.Ativo !== false; });
+  var historico = sheetToObjects_('historico_acao').map(limparRow_).filter(function (o) { return o.Ativo !== false; });
 
-  .filtros { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
-  .filtros select, .filtros button { padding:6px 10px; border-radius:6px; border:1px solid var(--borda); font-size:13px; }
-
-  table.tabela { width:100%; border-collapse:collapse; background:#fff; font-size:13px; }
-  table.tabela th, table.tabela td { border:1px solid var(--borda); padding:8px; text-align:left; vertical-align:top; }
-  table.tabela th { background:var(--azul-claro); }
-
-  .kanban { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
-  .coluna-kanban { background:#fff; border:1px solid var(--borda); border-radius:8px; padding:10px; }
-  .coluna-kanban h4 { margin:0 0 8px; font-size:13px; color:#555; }
-  .cartao-acao { border:1px solid var(--borda); border-radius:6px; padding:8px; margin-bottom:8px; font-size:12px; background:#fafbfc; }
-  .cartao-acao .risco { color:#666; font-size:11px; margin-top:4px; }
-
-  .timeline { list-style:none; padding:0; margin:0; border-left:2px solid var(--borda); }
-  .timeline li { position:relative; padding:0 0 18px 20px; }
-  .timeline li::before { content:''; position:absolute; left:-6px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--azul); }
-  .timeline .data { font-size:12px; color:#666; font-weight:600; }
-  .timeline .detalhe { font-size:14px; margin-top:2px; }
-
-  #estado-carregamento { padding:40px; text-align:center; color:#666; }
-</style>
-</head>
-<body>
-  <header>
-    <h1>Gestão Baseada em Riscos</h1>
-    <div class="sub">Departamento Administrativo — EFLCH / UNIFESP Guarulhos · <span id="atualizado-em"></span></div>
-  </header>
-
-  <main>
-    <div id="estado-carregamento">Carregando dados…</div>
-    <div id="conteudo" style="display:none;">
-
-      <section id="sec-mvv">
-        <h2>Missão, Visão e Valores</h2>
-        <div class="grid-cards" id="grid-mvv"></div>
-      </section>
-
-      <section id="sec-swot">
-        <h2>Análise SWOT</h2>
-        <div class="swot-matriz">
-          <div class="swot-celula-vazia"></div>
-          <div class="swot-cabecalho-coluna">Fatores Positivos</div>
-          <div class="swot-cabecalho-coluna">Fatores Negativos</div>
-          <div class="swot-cabecalho-linha">Internos</div>
-          <div class="swot-quadrante forca"><h3>Forças</h3><ul id="swot-Força"></ul></div>
-          <div class="swot-quadrante fraqueza"><h3>Fraquezas</h3><ul id="swot-Fraqueza"></ul></div>
-          <div class="swot-cabecalho-linha">Externos</div>
-          <div class="swot-quadrante oportunidade"><h3>Oportunidades</h3><ul id="swot-Oportunidade"></ul></div>
-          <div class="swot-quadrante ameaca"><h3>Ameaças</h3><ul id="swot-Ameaça"></ul></div>
-        </div>
-      </section>
-
-      <section id="sec-oe">
-        <h2>Objetivos Estratégicos</h2>
-        <div class="grid-cards" id="grid-oe"></div>
-      </section>
-
-      <section id="sec-matriz">
-        <h2>Matriz de Risco (Probabilidade × Consequência)</h2>
-        <table class="matriz" id="tabela-matriz"></table>
-      </section>
-
-      <section id="sec-riscos">
-        <h2>Riscos Identificados</h2>
-        <div class="filtros">
-          <select id="filtro-oe"><option value="">Todos os Objetivos Estratégicos</option></select>
-          <select id="filtro-nivel">
-            <option value="">Todos os níveis</option>
-            <option value="Extremo">Extremo</option><option value="Alto">Alto</option>
-            <option value="Moderado">Moderado</option><option value="Baixo">Baixo</option>
-          </select>
-          <button id="btn-limpar-filtros">Limpar filtros</button>
-        </div>
-        <table class="tabela"><thead><tr><th>ID</th><th>Evento</th><th>P×C</th><th>RR</th><th>Nível</th><th>Resposta</th><th>OEs afetados</th></tr></thead>
-          <tbody id="corpo-riscos"></tbody>
-        </table>
-      </section>
-
-      <section id="sec-plano">
-        <h2>Plano de Ação</h2>
-        <div class="kanban" id="kanban-acoes"></div>
-      </section>
-
-      <section id="sec-historico">
-        <h2>Histórico de Ações Efetivadas</h2>
-        <ul class="timeline" id="lista-historico"></ul>
-      </section>
-
-    </div>
-  </main>
-
-<script>
-(function () {
-  var NIVEL_COR = { Baixo:'#2e7d32', Moderado:'#f9a825', Alto:'#ef6c00', Extremo:'#c62828', '-':'#9e9e9e' };
-  var dados = null;
-  var filtroAtivo = { oe: '', nivel: '' };
-
-  function escapeHtml(s) {
-    if (s === null || s === undefined) return '';
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
-  function badge(nivel) {
-    return '<span class="badge ' + nivel + '">' + escapeHtml(nivel) + '</span>';
-  }
-
-  function nomesOEs(idsOE, objetivos) {
-    idsOE = idsOE || [];
-    return idsOE.map(function (id) {
-      var oe = objetivos.filter(function (o) { return o.ID_OE === id; })[0];
-      return oe ? (id + ' — ' + oe.Descricao) : id;
-    });
-  }
-
-  function renderMVV() {
-    var html = dados.mvv.map(function (m) {
-      var eixoHtml = m.EixoPDI ? '<p style="margin-top:6px;font-size:12px;color:#666;"><b>Eixo do PDI 2026-2030:</b> ' + escapeHtml(m.EixoPDI) + '</p>' : '';
-      return '<div class="card"><h3>' + escapeHtml(m.Tipo) + '</h3><p>' + escapeHtml(m.Descricao) + '</p>' + eixoHtml + '</div>';
-    }).join('');
-    document.getElementById('grid-mvv').innerHTML = html;
-  }
-
-  function renderSWOT() {
-    ['Força', 'Fraqueza', 'Oportunidade', 'Ameaça'].forEach(function (cat) {
-      var itens = dados.swot.filter(function (s) { return s.Categoria === cat; });
-      document.getElementById('swot-' + cat).innerHTML = itens.map(function (i) {
-        var oes = nomesOEs(i.OEs, dados.objetivos);
-        return '<li>' + escapeHtml(i.Descricao) + (oes.length ? ' <span style="color:#888;font-size:12px;">(' + oes.map(escapeHtml).join('; ') + ')</span>' : '') + '</li>';
-      }).join('');
-    });
-  }
-
-  var CATEGORIAS_SWOT_POSITIVAS = ['Força', 'Oportunidade'];
-  var CATEGORIAS_SWOT_NEGATIVAS = ['Fraqueza', 'Ameaça'];
-
-  function renderOE() {
-    var html = dados.objetivos.map(function (oe) {
-      var relacionados = oe.swotRelacionado || [];
-      var negativos = relacionados.filter(function (s) { return CATEGORIAS_SWOT_NEGATIVAS.indexOf(s.Categoria) !== -1; });
-      var positivos = relacionados.filter(function (s) { return CATEGORIAS_SWOT_POSITIVAS.indexOf(s.Categoria) !== -1; });
-      var swotHtml = '';
-      if (negativos.length) {
-        swotHtml += '<div style="margin-top:8px;font-size:13px;color:' + NIVEL_COR.Extremo + ';"><b>⚠ Atrapalham este objetivo:</b><ul style="margin:4px 0 0;padding-left:18px;">' +
-          negativos.map(function (s) { return '<li>[' + escapeHtml(s.Categoria) + '] ' + escapeHtml(s.Descricao) + '</li>'; }).join('') + '</ul></div>';
-      }
-      if (positivos.length) {
-        swotHtml += '<div style="margin-top:8px;font-size:13px;color:' + NIVEL_COR.Baixo + ';"><b>✓ Contribuem para este objetivo:</b><ul style="margin:4px 0 0;padding-left:18px;">' +
-          positivos.map(function (s) { return '<li>[' + escapeHtml(s.Categoria) + '] ' + escapeHtml(s.Descricao) + '</li>'; }).join('') + '</ul></div>';
-      }
-      var mvvHtml = (oe.mvvRelacionado || []).length
-        ? '<div style="margin-top:8px;font-size:13px;color:#555;"><b>🎯 Contribui para:</b><ul style="margin:4px 0 0;padding-left:18px;">' +
-          oe.mvvRelacionado.map(function (m) { return '<li>[' + escapeHtml(m.Tipo) + '] ' + escapeHtml(m.Descricao) + '</li>'; }).join('') + '</ul></div>'
-        : '';
-      return '<div class="card"><h3>' + escapeHtml(oe.ID_OE) + '</h3><p>' + escapeHtml(oe.Descricao) + '</p>' +
-        '<p style="margin-top:8px;">' + badge(oe.nivelRR) + ' &nbsp; ' + oe.countRiscos + ' risco(s) · Média RR ' + (Number(oe.mediaRR)||0).toFixed(1) + '</p>' +
-        mvvHtml +
-        swotHtml +
-        '</div>';
-    }).join('');
-    document.getElementById('grid-oe').innerHTML = html;
-
-    var selectOE = document.getElementById('filtro-oe');
-    dados.objetivos.forEach(function (oe) {
-      var opt = document.createElement('option');
-      opt.value = oe.ID_OE; opt.textContent = oe.ID_OE + ' — ' + oe.Descricao;
-      selectOE.appendChild(opt);
-    });
-  }
-
-  function nivelRRCliente(rr) {
-    if (rr >= 20) return 'Extremo';
-    if (rr >= 11) return 'Alto';
-    if (rr >= 6) return 'Moderado';
-    return 'Baixo';
-  }
-
-  function renderMatriz() {
-    var html = '<tr><th></th>' + [1,2,3,4,5].map(function(c){ return '<th>C=' + c + '</th>'; }).join('') + '</tr>';
-    for (var p = 5; p >= 1; p--) {
-      html += '<tr><th>P=' + p + '</th>';
-      for (var c = 1; c <= 5; c++) {
-        var rr = p * c, nivel = nivelRRCliente(rr);
-        var count = dados.riscos.filter(function (r) { return Number(r.P) === p && Number(r.C) === c; }).length;
-        html += '<td data-p="' + p + '" data-c="' + c + '" style="background:' + NIVEL_COR[nivel] + '22;border-color:' + NIVEL_COR[nivel] + '">' +
-          '<b>' + rr + '</b>' + (count ? '<br><small>' + count + '</small>' : '') + '</td>';
-      }
-      html += '</tr>';
-    }
-    document.getElementById('tabela-matriz').innerHTML = html;
-    document.querySelectorAll('#tabela-matriz td[data-p]').forEach(function (td) {
-      td.addEventListener('click', function () {
-        var p = Number(td.dataset.p), c = Number(td.dataset.c);
-        var jaAtiva = td.classList.contains('ativa');
-        document.querySelectorAll('#tabela-matriz td').forEach(function (x) { x.classList.remove('ativa'); });
-        filtroAtivo.pc = null;
-        if (!jaAtiva) { td.classList.add('ativa'); filtroAtivo.pc = { p: p, c: c }; }
-        renderRiscos();
-      });
-    });
-  }
-
-  function riscosFiltrados() {
-    return dados.riscos.filter(function (r) {
-      if (filtroAtivo.oe && (r.OEs || []).indexOf(filtroAtivo.oe) === -1) return false;
-      if (filtroAtivo.nivel && r.Nivel_RR !== filtroAtivo.nivel) return false;
-      if (filtroAtivo.pc && (Number(r.P) !== filtroAtivo.pc.p || Number(r.C) !== filtroAtivo.pc.c)) return false;
-      return true;
-    });
-  }
-
-  function renderRiscos() {
-    var lista = riscosFiltrados();
-    document.getElementById('corpo-riscos').innerHTML = lista.map(function (r) {
-      return '<tr><td>' + escapeHtml(r.ID_Risco) + '</td><td>' + escapeHtml(r.Evento_Risco) + '</td><td>' + r.P + '×' + r.C + '</td><td>' + r.RR + '</td><td>' + badge(r.Nivel_RR) + '</td>' +
-        '<td>' + escapeHtml(r.Resposta_Risco || '—') + '</td>' +
-        '<td>' + nomesOEs(r.OEs, dados.objetivos).map(escapeHtml).join('<br>') + '</td></tr>';
-    }).join('') || '<tr><td colspan="7" style="text-align:center;color:#888;">Nenhum risco encontrado para os filtros selecionados.</td></tr>';
-  }
-
-  function renderPlano() {
-    var statusOrdem = ['Não iniciado', 'Em andamento', 'Ação contínua', 'Concluído', 'Cancelado'];
-    var html = statusOrdem.map(function (status) {
-      var acoes = dados.planoAcao.filter(function (a) { return a.Status === status; });
-      var cartoes = acoes.map(function (a) {
-        var risco = dados.riscos.filter(function (r) { return r.ID_Risco === a.ID_Risco; })[0];
-        return '<div class="cartao-acao">' + escapeHtml(a.Acao) +
-          '<div class="risco">' + escapeHtml(a.ID_Risco) + (risco ? ' — ' + escapeHtml(risco.Evento_Risco) : '') + ' · ' + escapeHtml(a.Ano_Acao) + '</div></div>';
-      }).join('');
-      return '<div class="coluna-kanban"><h4>' + status + ' (' + acoes.length + ')</h4>' + (cartoes || '<p style="color:#aaa;font-size:12px;">—</p>') + '</div>';
-    }).join('');
-    document.getElementById('kanban-acoes').innerHTML = html;
-  }
-
-  function formatarData(iso) {
-    if (!iso) return '';
-    var d = new Date(iso);
-    if (isNaN(d.getTime())) return String(iso);
-    return d.toLocaleDateString('pt-BR');
-  }
-
-  function renderHistorico() {
-    var lista = dados.historico.slice().sort(function (a, b) { return new Date(b.Data) - new Date(a.Data); });
-    document.getElementById('lista-historico').innerHTML = lista.map(function (h) {
-      return '<li><div class="data">' + formatarData(h.Data) + ' · ' + escapeHtml(h.Status) + '</div><div class="detalhe">' + escapeHtml(h.Detalhamento) + '</div></li>';
-    }).join('');
-  }
-
-  function aplicarFiltrosDeSelect() {
-    filtroAtivo.oe = document.getElementById('filtro-oe').value;
-    filtroAtivo.nivel = document.getElementById('filtro-nivel').value;
-    renderRiscos();
-  }
-
-  function iniciar(json) {
-    dados = json;
-    document.getElementById('atualizado-em').textContent = dados.atualizadoEm ? ('Atualizado em ' + formatarData(dados.atualizadoEm)) : '';
-    renderMVV(); renderSWOT(); renderOE(); renderMatriz(); renderRiscos(); renderPlano(); renderHistorico();
-
-    document.getElementById('filtro-oe').addEventListener('change', aplicarFiltrosDeSelect);
-    document.getElementById('filtro-nivel').addEventListener('change', aplicarFiltrosDeSelect);
-    document.getElementById('btn-limpar-filtros').addEventListener('click', function () {
-      filtroAtivo = { oe:'', nivel:'', pc:null };
-      document.getElementById('filtro-oe').value = '';
-      document.getElementById('filtro-nivel').value = '';
-      document.querySelectorAll('#tabela-matriz td').forEach(function (x) { x.classList.remove('ativa'); });
-      renderRiscos();
-    });
-
-    document.getElementById('estado-carregamento').style.display = 'none';
-    document.getElementById('conteudo').style.display = 'block';
-  }
-
-  fetch('./data.json').then(function (r) { return r.json(); }).then(iniciar).catch(function (e) {
-    document.getElementById('estado-carregamento').textContent = 'Não foi possível carregar os dados (data.json). Detalhe: ' + e.message;
+  // Resolve os eixos do PDI relacionados a cada item de MVV (N:N)
+  mvv.forEach(function (m) {
+    var idsEixo = mvvEixo.filter(function (v) { return v.ID_MVV === m.ID; }).map(function (v) { return v.ID_EixoPDI; });
+    m.eixosPdiRelacionados = eixosPdi.filter(function (e) { return idsEixo.indexOf(e.ID) !== -1; });
   });
 
-  // Exposto para testes automatizados (Node/jsdom)
-  if (typeof window !== 'undefined') { window.__gbrTeste = { iniciar: iniciar, riscosFiltrados: riscosFiltrados }; }
-})();
-</script>
-</body>
-</html>
+  // Anexa a cada risco a lista de OEs vinculados (N:N)
+  riscos.forEach(function (r) {
+    r.OEs = riscosOE
+      .filter(function (v) { return v.ID_Risco === r.ID_Risco; })
+      .map(function (v) { return v.ID_OE; });
+  });
+
+  // Anexa a cada item SWOT a lista de OEs relacionados (N:N)
+  swot.forEach(function (s) {
+    s.OEs = swotOE
+      .filter(function (v) { return v.ID_SWOT === s.ID; })
+      .map(function (v) { return v.ID_OE; });
+  });
+
+  // Calcula agregados de cada OE a partir dos riscos vinculados, e anexa o SWOT e o MVV relacionados
+  var objetivos = objetivosRaw.map(function (oe) {
+    var agr = calcularAgregadosOE_(oe.ID_OE, riscos, riscosOE);
+    var idsSwot = swotOE.filter(function (v) { return v.ID_OE === oe.ID_OE; }).map(function (v) { return v.ID_SWOT; });
+    var swotRelacionado = swot.filter(function (s) { return idsSwot.indexOf(s.ID) !== -1; });
+    var idsMvv = mvvOE.filter(function (v) { return v.ID_OE === oe.ID_OE; }).map(function (v) { return v.ID_MVV; });
+    var mvvRelacionado = mvv.filter(function (m) { return idsMvv.indexOf(m.ID) !== -1; });
+    return Object.assign({}, oe, agr, { swotRelacionado: swotRelacionado, mvvRelacionado: mvvRelacionado });
+  });
+
+  return {
+    atualizadoEm: new Date().toISOString(),
+    eixosPdi: eixosPdi,
+    mvv: mvv,
+    swot: swot,
+    objetivos: objetivos,
+    riscos: riscos,
+    planoAcao: planoAcao,
+    historico: historico
+  };
+}
+
+function api_publicarGitHub() {
+  checkAccess_();
+  return publicarGitHub_();
+}
+
+function publicarGitHubManual() {
+  try {
+    var res = publicarGitHub_();
+    SpreadsheetApp.getUi().alert('Publicado com sucesso em ' + res.atualizadoEm);
+  } catch (e) {
+    SpreadsheetApp.getUi().alert('Erro ao publicar: ' + e.message);
+  }
+}
+
+function publicarGitHub_() {
+  var props = PropertiesService.getScriptProperties();
+  var token = props.getProperty('GITHUB_TOKEN');
+  var owner = props.getProperty('GITHUB_OWNER');
+  var repo = props.getProperty('GITHUB_REPO');
+  var branch = props.getProperty('GITHUB_BRANCH') || 'main';
+  var path = props.getProperty('GITHUB_PATH') || 'data.json';
+
+  if (!token || !owner || !repo) {
+    throw new Error('Configure GITHUB_TOKEN, GITHUB_OWNER e GITHUB_REPO nas Propriedades do Script antes de publicar.');
+  }
+
+  var json = compilarJSON_();
+  var conteudo = JSON.stringify(json, null, 2);
+  var conteudoB64 = Utilities.base64Encode(Utilities.newBlob(conteudo).getBytes());
+
+  var baseUrl = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
+
+  // 1) Obtém o sha do arquivo atual, se existir (necessário para atualização)
+  var sha = null;
+  var getResp = UrlFetchApp.fetch(baseUrl + '?ref=' + branch, {
+    method: 'get',
+    headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' },
+    muteHttpExceptions: true
+  });
+  if (getResp.getResponseCode() === 200) {
+    sha = JSON.parse(getResp.getContentText()).sha;
+  }
+
+  var payload = {
+    message: 'Atualização automática de dados — GBR ' + Utilities.formatDate(new Date(), 'America/Sao_Paulo', 'dd/MM/yyyy HH:mm'),
+    content: conteudoB64,
+    branch: branch
+  };
+  if (sha) payload.sha = sha;
+
+  var putResp = UrlFetchApp.fetch(baseUrl, {
+    method: 'put',
+    contentType: 'application/json',
+    headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' },
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  });
+
+  var codigo = putResp.getResponseCode();
+  if (codigo !== 200 && codigo !== 201) {
+    throw new Error('Falha ao publicar no GitHub (HTTP ' + codigo + '): ' + putResp.getContentText());
+  }
+  return { ok: true, atualizadoEm: json.atualizadoEm };
+}
