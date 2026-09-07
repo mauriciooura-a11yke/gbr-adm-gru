@@ -189,8 +189,13 @@
         swotHtml += '<div style="margin-top:8px;font-size:13px;color:' + NIVEL_COR.Baixo + ';"><b>✓ Contribuem para este objetivo:</b><ul style="margin:4px 0 0;padding-left:18px;">' +
           positivos.map(function (s) { return '<li>[' + escapeHtml(s.Categoria) + '] ' + escapeHtml(s.Descricao) + '</li>'; }).join('') + '</ul></div>';
       }
+      var mvvHtml = (oe.mvvRelacionado || []).length
+        ? '<div style="margin-top:8px;font-size:13px;color:#555;"><b>🎯 Contribui para:</b><ul style="margin:4px 0 0;padding-left:18px;">' +
+          oe.mvvRelacionado.map(function (m) { return '<li>[' + escapeHtml(m.Tipo) + '] ' + escapeHtml(m.Descricao) + '</li>'; }).join('') + '</ul></div>'
+        : '';
       return '<div class="card"><h3>' + escapeHtml(oe.ID_OE) + '</h3><p>' + escapeHtml(oe.Descricao) + '</p>' +
         '<p style="margin-top:8px;">' + badge(oe.nivelRR) + ' &nbsp; ' + oe.countRiscos + ' risco(s) · Média RR ' + (Number(oe.mediaRR)||0).toFixed(1) + '</p>' +
+        mvvHtml +
         swotHtml +
         '</div>';
     }).join('');
