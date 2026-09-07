@@ -157,7 +157,8 @@
 
   function renderMVV() {
     var html = dados.mvv.map(function (m) {
-      return '<div class="card"><h3>' + escapeHtml(m.Tipo) + '</h3><p>' + escapeHtml(m.Descricao) + '</p></div>';
+      var eixoHtml = m.EixoPDI ? '<p style="margin-top:6px;font-size:12px;color:#666;"><b>Eixo do PDI 2026-2030:</b> ' + escapeHtml(m.EixoPDI) + '</p>' : '';
+      return '<div class="card"><h3>' + escapeHtml(m.Tipo) + '</h3><p>' + escapeHtml(m.Descricao) + '</p>' + eixoHtml + '</div>';
     }).join('');
     document.getElementById('grid-mvv').innerHTML = html;
   }
