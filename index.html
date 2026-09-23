@@ -316,11 +316,10 @@
   function htmlContextoAcao(idAcao) {
     var cadeia = resolverCadeiaAcao(idAcao);
     if (!cadeia) return '';
-    var corpo = '<div class="contexto-item"><b>Ação:</b> ' + escapeHtml(cadeia.acao.ID_Acao) + ' — ' + escapeHtml(cadeia.acao.Acao) + '</div>';
+    var corpo = '';
     if (!cadeia.risco) {
       corpo += '<div class="contexto-sub"><i>Risco vinculado não encontrado.</i></div>';
     } else {
-      corpo += '<div class="contexto-item">↳ <b>Risco:</b> ' + escapeHtml(cadeia.risco.ID_Risco) + ' — ' + escapeHtml(cadeia.risco.Evento_Risco) + ' ' + badge(cadeia.risco.Nivel_RR) + '</div>';
       if (!cadeia.oes.length) {
         corpo += '<div class="contexto-sub"><i>Nenhum Objetivo Estratégico vinculado a este risco.</i></div>';
       } else {
@@ -329,12 +328,14 @@
             var eixos = (m.eixosPdiRelacionados || []).map(function (e) { return e.Descricao; }).join(', ');
             return '[' + m.Tipo + '] ' + m.Descricao + (eixos ? ' (Eixos PDI: ' + eixos + ')' : '');
           }).join('; ');
-          return '<div class="contexto-item" style="margin-left:14px;">↳ <b>' + escapeHtml(oe.ID_OE) + '</b> — ' + escapeHtml(oe.Descricao) +
-            '<div class="contexto-sub">↳ ' + (mvvTexto ? escapeHtml(mvvTexto) : '<i>nenhum item de Missão/Visão/Valores vinculado ainda</i>') + '</div></div>';
+          return '<div class="contexto-item">' + (mvvTexto ? escapeHtml(mvvTexto) : '<i>nenhum item de Missão/Visão/Valores vinculado ainda</i>') +
+            '<div class="contexto-sub">↳ <b>' + escapeHtml(oe.ID_OE) + '</b> — ' + escapeHtml(oe.Descricao) + '</div></div>';
         }).join('');
       }
+      corpo += '<div class="contexto-item" style="margin-left:14px;">↳ <b>Risco:</b> ' + escapeHtml(cadeia.risco.ID_Risco) + ' — ' + escapeHtml(cadeia.risco.Evento_Risco) + ' ' + badge(cadeia.risco.Nivel_RR) + '</div>';
     }
-    return '<div class="contexto-cascata"><div class="contexto-titulo">Contexto (cascata até a Missão)</div>' + corpo + '</div>';
+    corpo += '<div class="contexto-item" style="margin-left:28px;">↳ <b>Ação:</b> ' + escapeHtml(cadeia.acao.ID_Acao) + ' — ' + escapeHtml(cadeia.acao.Acao) + '</div>';
+    return '<div class="contexto-cascata"><div class="contexto-titulo">Contexto (cascata desde a Missão)</div>' + corpo + '</div>';
   }
 
   function renderHistorico() {
