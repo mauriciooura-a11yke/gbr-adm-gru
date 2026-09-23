@@ -60,6 +60,15 @@
   .timeline .data { font-size:12px; color:#666; font-weight:600; }
   .timeline .detalhe { font-size:14px; margin-top:2px; }
 
+  .riscos-por-nivel h3 { display:flex; align-items:center; gap:8px; margin:22px 0 6px; font-size:15px; }
+  .riscos-por-nivel h3:first-child { margin-top:0; }
+  .sem-riscos-nivel { color:#888; font-size:13px; margin:0 0 8px; }
+
+  .contexto-cascata { margin-top:10px; padding:10px 12px; background:#f6f8fa; border:1px dashed var(--borda); border-radius:6px; font-size:13px; }
+  .contexto-titulo { font-weight:600; color:#555; margin-bottom:6px; font-size:11px; text-transform:uppercase; letter-spacing:.02em; }
+  .contexto-item { margin:4px 0; }
+  .contexto-sub { color:#666; font-size:12px; margin:2px 0 2px 14px; }
+
   #estado-carregamento { padding:40px; text-align:center; color:#666; }
 </style>
 </head>
@@ -114,9 +123,7 @@
           </select>
           <button id="btn-limpar-filtros">Limpar filtros</button>
         </div>
-        <table class="tabela"><thead><tr><th>ID</th><th>Evento</th><th>P×C</th><th>RR</th><th>Nível</th><th>Resposta</th><th>OEs afetados</th></tr></thead>
-          <tbody id="corpo-riscos"></tbody>
-        </table>
+        <div class="riscos-por-nivel" id="riscos-por-nivel"></div>
       </section>
 
       <section id="sec-plano">
@@ -254,11 +261,23 @@
 
   function renderRiscos() {
     var lista = riscosFiltrados();
-    document.getElementById('corpo-riscos').innerHTML = lista.map(function (r) {
-      return '<tr><td>' + escapeHtml(r.ID_Risco) + '</td><td>' + escapeHtml(r.Evento_Risco) + '</td><td>' + r.P + '×' + r.C + '</td><td>' + r.RR + '</td><td>' + badge(r.Nivel_RR) + '</td>' +
-        '<td>' + escapeHtml(r.Resposta_Risco || '—') + '</td>' +
-        '<td>' + nomesOEs(r.OEs, dados.objetivos).map(escapeHtml).join('<br>') + '</td></tr>';
-    }).join('') || '<tr><td colspan="7" style="text-align:center;color:#888;">Nenhum risco encontrado para os filtros selecionados.</td></tr>';
+    var ordemNiveis = ['Extremo', 'Alto', 'Moderado', 'Baixo'];
+    var html = ordemNiveis.map(function (nivel) {
+      var doNivel = lista.filter(function (r) { return r.Nivel_RR === nivel; });
+      var corpo;
+      if (!doNivel.length) {
+        corpo = '<p class="sem-riscos-nivel">Nenhum risco neste nível' + (filtroAtivo.oe || filtroAtivo.nivel || filtroAtivo.pc ? ' (para os filtros selecionados)' : '') + '.</p>';
+      } else {
+        corpo = '<table class="tabela"><thead><tr><th>ID</th><th>Evento</th><th>P×C</th><th>RR</th><th>Resposta</th><th>OEs afetados</th></tr></thead><tbody>' +
+          doNivel.map(function (r) {
+            return '<tr><td>' + escapeHtml(r.ID_Risco) + '</td><td>' + escapeHtml(r.Evento_Risco) + '</td><td>' + r.P + '×' + r.C + '</td><td>' + r.RR + '</td>' +
+              '<td>' + escapeHtml(r.Resposta_Risco || '—') + '</td>' +
+              '<td>' + nomesOEs(r.OEs, dados.objetivos).map(escapeHtml).join('<br>') + '</td></tr>';
+          }).join('') + '</tbody></table>';
+      }
+      return '<h3>' + badge(nivel) + ' <span style="color:#666;font-weight:400;">(' + doNivel.length + ')</span></h3>' + corpo;
+    }).join('');
+    document.getElementById('riscos-por-nivel').innerHTML = html;
   }
 
   function renderPlano() {
@@ -282,10 +301,47 @@
     return d.toLocaleDateString('pt-BR');
   }
 
+  /** Resolve a cascata Ação -> Risco -> Objetivo(s) Estratégico(s) -> Missão/Eixo(s) do PDI,
+   *  a partir do ID da ação — usa os dados já resolvidos vindos do data.json. */
+  function resolverCadeiaAcao(idAcao) {
+    var acao = (dados.planoAcao || []).filter(function (a) { return a.ID_Acao === idAcao; })[0];
+    if (!acao) return null;
+    var risco = (dados.riscos || []).filter(function (r) { return r.ID_Risco === acao.ID_Risco; })[0];
+    var oes = risco ? (risco.OEs || []).map(function (id) {
+      return (dados.objetivos || []).filter(function (o) { return o.ID_OE === id; })[0];
+    }).filter(Boolean) : [];
+    return { acao: acao, risco: risco, oes: oes };
+  }
+
+  function htmlContextoAcao(idAcao) {
+    var cadeia = resolverCadeiaAcao(idAcao);
+    if (!cadeia) return '';
+    var corpo = '<div class="contexto-item"><b>Ação:</b> ' + escapeHtml(cadeia.acao.ID_Acao) + ' — ' + escapeHtml(cadeia.acao.Acao) + '</div>';
+    if (!cadeia.risco) {
+      corpo += '<div class="contexto-sub"><i>Risco vinculado não encontrado.</i></div>';
+    } else {
+      corpo += '<div class="contexto-item">↳ <b>Risco:</b> ' + escapeHtml(cadeia.risco.ID_Risco) + ' — ' + escapeHtml(cadeia.risco.Evento_Risco) + ' ' + badge(cadeia.risco.Nivel_RR) + '</div>';
+      if (!cadeia.oes.length) {
+        corpo += '<div class="contexto-sub"><i>Nenhum Objetivo Estratégico vinculado a este risco.</i></div>';
+      } else {
+        corpo += cadeia.oes.map(function (oe) {
+          var mvvTexto = (oe.mvvRelacionado || []).map(function (m) {
+            var eixos = (m.eixosPdiRelacionados || []).map(function (e) { return e.Descricao; }).join(', ');
+            return '[' + m.Tipo + '] ' + m.Descricao + (eixos ? ' (Eixos PDI: ' + eixos + ')' : '');
+          }).join('; ');
+          return '<div class="contexto-item" style="margin-left:14px;">↳ <b>' + escapeHtml(oe.ID_OE) + '</b> — ' + escapeHtml(oe.Descricao) +
+            '<div class="contexto-sub">↳ ' + (mvvTexto ? escapeHtml(mvvTexto) : '<i>nenhum item de Missão/Visão/Valores vinculado ainda</i>') + '</div></div>';
+        }).join('');
+      }
+    }
+    return '<div class="contexto-cascata"><div class="contexto-titulo">Contexto (cascata até a Missão)</div>' + corpo + '</div>';
+  }
+
   function renderHistorico() {
     var lista = dados.historico.slice().sort(function (a, b) { return new Date(b.Data) - new Date(a.Data); });
     document.getElementById('lista-historico').innerHTML = lista.map(function (h) {
-      return '<li><div class="data">' + formatarData(h.Data) + ' · ' + escapeHtml(h.Status) + '</div><div class="detalhe">' + escapeHtml(h.Detalhamento) + '</div></li>';
+      return '<li><div class="data">' + formatarData(h.Data) + ' · ' + escapeHtml(h.Status) + '</div><div class="detalhe">' + escapeHtml(h.Detalhamento) + '</div>' +
+        htmlContextoAcao(h.ID_Acao) + '</li>';
     }).join('');
   }
 
@@ -319,7 +375,7 @@
   });
 
   // Exposto para testes automatizados (Node/jsdom)
-  if (typeof window !== 'undefined') { window.__gbrTeste = { iniciar: iniciar, riscosFiltrados: riscosFiltrados }; }
+  if (typeof window !== 'undefined') { window.__gbrTeste = { iniciar: iniciar, riscosFiltrados: riscosFiltrados, resolverCadeiaAcao: resolverCadeiaAcao, htmlContextoAcao: htmlContextoAcao }; }
 })();
 </script>
 </body>
