@@ -1,0 +1,1460 @@
+{
+  "atualizadoEm": "2026-09-23T17:33:01.049Z",
+  "eixosPdi": [
+    {
+      "ID": "EIXO-1",
+      "Descricao": "2026-2030: Excelência acadêmico-assistencial e inovação",
+      "Ativo": true
+    },
+    {
+      "ID": "EIXO-2",
+      "Descricao": "2026-2030: Inclusão, Diversidade e Acessibilidade",
+      "Ativo": true
+    },
+    {
+      "ID": "EIXO-3",
+      "Descricao": "2026-2030: Sustentabilidade e Responsabilidade Social",
+      "Ativo": true
+    },
+    {
+      "ID": "EIXO-4",
+      "Descricao": "2026-2030: Aprimoramento da Infraestrutura e Tecnologia",
+      "Ativo": true
+    },
+    {
+      "ID": "EIXO-5",
+      "Descricao": "2026-2030: Desenvolvimento Institucional e Gestão Eficiente",
+      "Ativo": true
+    }
+  ],
+  "mvv": [
+    {
+      "ID": "MVV-1",
+      "Tipo": "Missão",
+      "Descricao": "Gerir de forma ética e eficiente os recursos da Unifesp, assegurando uma administração transparente e comprometida, para viabilizar a excelência acadêmica e contribuir para o desenvolvimento social, econômico e ambiental do país.",
+      "Ativo": true,
+      "EixoPDI": "",
+      "eixoPdiRelacionado": null
+    },
+    {
+      "ID": "MVV-2",
+      "Tipo": "Valores",
+      "Descricao": "Ser referência em gestão universitária, promovendo a inovação, a inclusão, e a sustentabilidade, alinhada com os valores de sustentabilidade e responsabilidade social da Unifesp.",
+      "Ativo": true,
+      "EixoPDI": "",
+      "eixoPdiRelacionado": null
+    },
+    {
+      "ID": "MVV-3",
+      "Tipo": "Valores",
+      "Descricao": "Ética e Transparência: Atuar com integridade e transparência em todas as práticas administrativas.",
+      "Ativo": true,
+      "EixoPDI": "",
+      "eixoPdiRelacionado": null
+    },
+    {
+      "ID": "MVV-4",
+      "Tipo": "Valores",
+      "Descricao": "Colaboração e Empatia: Fomentar uma cultura de cooperação, solidariedade e empatia.",
+      "Ativo": true,
+      "EixoPDI": "",
+      "eixoPdiRelacionado": null
+    },
+    {
+      "ID": "MVV-5",
+      "Tipo": "Valores",
+      "Descricao": "Excelência: Buscar a excelência na prestação de serviços administrativos.",
+      "Ativo": true,
+      "EixoPDI": "",
+      "eixoPdiRelacionado": null
+    },
+    {
+      "ID": "MVV-6",
+      "Tipo": "Valores",
+      "Descricao": "Proatividade: Fomentar a cultura de se antecipar aos problemas.",
+      "Ativo": true,
+      "EixoPDI": "",
+      "eixoPdiRelacionado": null
+    }
+  ],
+  "swot": [
+    {
+      "ID": "SWOT-1",
+      "Categoria": "Força",
+      "Descricao": "Equipes experientes.",
+      "Ativo": true,
+      "OEs": [
+        "OE-7",
+        "OE-3"
+      ]
+    },
+    {
+      "ID": "SWOT-2",
+      "Categoria": "Fraqueza",
+      "Descricao": "Falta de cultura de mapeamento de processos.",
+      "Ativo": true,
+      "OEs": [
+        "OE-3",
+        "OE-4",
+        "OE-7"
+      ]
+    },
+    {
+      "ID": "SWOT-3",
+      "Categoria": "Fraqueza",
+      "Descricao": "Lentidão na tomada de decisões simples.",
+      "Ativo": true,
+      "OEs": [
+        "OE-3",
+        "OE-4",
+        "OE-5",
+        "OE-7",
+        "OE-8"
+      ]
+    },
+    {
+      "ID": "SWOT-4",
+      "Categoria": "Fraqueza",
+      "Descricao": "Desbalanceamento de carga de trabalho entre equipes.",
+      "Ativo": true,
+      "OEs": [
+        "OE-3",
+        "OE-5"
+      ]
+    },
+    {
+      "ID": "SWOT-5",
+      "Categoria": "Fraqueza",
+      "Descricao": "Insuficiência de TAEs.",
+      "Ativo": true,
+      "OEs": [
+        "OE-1",
+        "OE-2",
+        "OE-3",
+        "OE-4",
+        "OE-5",
+        "OE-6",
+        "OE-7",
+        "OE-8",
+        "OE-9"
+      ]
+    },
+    {
+      "ID": "SWOT-6",
+      "Categoria": "Fraqueza",
+      "Descricao": "Por vezes, alienação de TAEs do administrativo em relação à missão da Unifesp.",
+      "Ativo": true,
+      "OEs": [
+        "OE-4",
+        "OE-6",
+        "OE-8"
+      ]
+    },
+    {
+      "ID": "SWOT-7",
+      "Categoria": "Fraqueza",
+      "Descricao": "Insuficiência de procedimentos internos e externos bem definidos.",
+      "Ativo": true,
+      "OEs": [
+        "OE-3",
+        "OE-4",
+        "OE-5",
+        "OE-7"
+      ]
+    },
+    {
+      "ID": "SWOT-8",
+      "Categoria": "Fraqueza",
+      "Descricao": "Falta de integração das divisões, especialmente, após pandemia.",
+      "Ativo": true,
+      "OEs": [
+        "OE-5",
+        "OE-4",
+        "OE-8"
+      ]
+    },
+    {
+      "ID": "SWOT-9",
+      "Categoria": "Oportunidade",
+      "Descricao": "Adotar melhores práticas administrativas de outras universidades federais.",
+      "Ativo": true,
+      "OEs": [
+        "OE-3",
+        "OE-4",
+        "OE-5",
+        "OE-7"
+      ]
+    },
+    {
+      "ID": "SWOT-10",
+      "Categoria": "Ameaça",
+      "Descricao": "Novas leis obrigam órgãos federais a fazer mais com menos pessoal, como a nova Lei de Licitações que aumenta os controles contratuais.",
+      "Ativo": true,
+      "OEs": [
+        "OE-3",
+        "OE-5",
+        "OE-8"
+      ]
+    },
+    {
+      "ID": "SWOT-11",
+      "Categoria": "Ameaça",
+      "Descricao": "Aumento do volume de emendas parlamentares e outros recursos destinados à Unifesp aumentam significativamente as atividades necessárias para aquisições e contratações.",
+      "Ativo": true,
+      "OEs": [
+        "OE-5",
+        "OE-7",
+        "OE-8"
+      ]
+    },
+    {
+      "ID": "SWOT-12",
+      "Categoria": "Ameaça",
+      "Descricao": "Contingenciamentos e bloqueios orçamentários.",
+      "Ativo": true,
+      "OEs": [
+        "OE-1",
+        "OE-2",
+        "OE-6",
+        "OE-8",
+        "OE-9"
+      ]
+    }
+  ],
+  "objetivos": [
+    {
+      "ID_OE": "OE-1",
+      "Descricao": "Proteger a integridade física da comunidade EFLCH.",
+      "Ativo": true,
+      "somaRR": 132,
+      "countRiscos": 11,
+      "mediaRR": 12,
+      "nivelRR": "Alto",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-12",
+          "Categoria": "Ameaça",
+          "Descricao": "Contingenciamentos e bloqueios orçamentários.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-6",
+            "OE-8",
+            "OE-9"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    },
+    {
+      "ID_OE": "OE-2",
+      "Descricao": "Garantir a segurança patrimonial e de dados, bem como o uso racional e sustentável de recursos.",
+      "Ativo": true,
+      "somaRR": 26,
+      "countRiscos": 4,
+      "mediaRR": 6.5,
+      "nivelRR": "Moderado",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-12",
+          "Categoria": "Ameaça",
+          "Descricao": "Contingenciamentos e bloqueios orçamentários.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-6",
+            "OE-8",
+            "OE-9"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    },
+    {
+      "ID_OE": "OE-3",
+      "Descricao": "Aperfeiçoar fluxos, processos e gestão.",
+      "Ativo": true,
+      "somaRR": 24,
+      "countRiscos": 2,
+      "mediaRR": 12,
+      "nivelRR": "Alto",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-1",
+          "Categoria": "Força",
+          "Descricao": "Equipes experientes.",
+          "Ativo": true,
+          "OEs": [
+            "OE-7",
+            "OE-3"
+          ]
+        },
+        {
+          "ID": "SWOT-2",
+          "Categoria": "Fraqueza",
+          "Descricao": "Falta de cultura de mapeamento de processos.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-3",
+          "Categoria": "Fraqueza",
+          "Descricao": "Lentidão na tomada de decisões simples.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-4",
+          "Categoria": "Fraqueza",
+          "Descricao": "Desbalanceamento de carga de trabalho entre equipes.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-5"
+          ]
+        },
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-7",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de procedimentos internos e externos bem definidos.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-9",
+          "Categoria": "Oportunidade",
+          "Descricao": "Adotar melhores práticas administrativas de outras universidades federais.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-10",
+          "Categoria": "Ameaça",
+          "Descricao": "Novas leis obrigam órgãos federais a fazer mais com menos pessoal, como a nova Lei de Licitações que aumenta os controles contratuais.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-5",
+            "OE-8"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    },
+    {
+      "ID_OE": "OE-4",
+      "Descricao": "Melhorar a comunicação e imagem do Departamento Administrativo.",
+      "Ativo": true,
+      "somaRR": 10,
+      "countRiscos": 1,
+      "mediaRR": 10,
+      "nivelRR": "Moderado",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-2",
+          "Categoria": "Fraqueza",
+          "Descricao": "Falta de cultura de mapeamento de processos.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-3",
+          "Categoria": "Fraqueza",
+          "Descricao": "Lentidão na tomada de decisões simples.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-6",
+          "Categoria": "Fraqueza",
+          "Descricao": "Por vezes, alienação de TAEs do administrativo em relação à missão da Unifesp.",
+          "Ativo": true,
+          "OEs": [
+            "OE-4",
+            "OE-6",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-7",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de procedimentos internos e externos bem definidos.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-8",
+          "Categoria": "Fraqueza",
+          "Descricao": "Falta de integração das divisões, especialmente, após pandemia.",
+          "Ativo": true,
+          "OEs": [
+            "OE-5",
+            "OE-4",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-9",
+          "Categoria": "Oportunidade",
+          "Descricao": "Adotar melhores práticas administrativas de outras universidades federais.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    },
+    {
+      "ID_OE": "OE-5",
+      "Descricao": "Melhorar as condições de trabalho de servidores e terceirizados.",
+      "Ativo": true,
+      "somaRR": 40,
+      "countRiscos": 3,
+      "mediaRR": 13.333333333333334,
+      "nivelRR": "Alto",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-3",
+          "Categoria": "Fraqueza",
+          "Descricao": "Lentidão na tomada de decisões simples.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-4",
+          "Categoria": "Fraqueza",
+          "Descricao": "Desbalanceamento de carga de trabalho entre equipes.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-5"
+          ]
+        },
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-7",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de procedimentos internos e externos bem definidos.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-8",
+          "Categoria": "Fraqueza",
+          "Descricao": "Falta de integração das divisões, especialmente, após pandemia.",
+          "Ativo": true,
+          "OEs": [
+            "OE-5",
+            "OE-4",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-9",
+          "Categoria": "Oportunidade",
+          "Descricao": "Adotar melhores práticas administrativas de outras universidades federais.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-10",
+          "Categoria": "Ameaça",
+          "Descricao": "Novas leis obrigam órgãos federais a fazer mais com menos pessoal, como a nova Lei de Licitações que aumenta os controles contratuais.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-5",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-11",
+          "Categoria": "Ameaça",
+          "Descricao": "Aumento do volume de emendas parlamentares e outros recursos destinados à Unifesp aumentam significativamente as atividades necessárias para aquisições e contratações.",
+          "Ativo": true,
+          "OEs": [
+            "OE-5",
+            "OE-7",
+            "OE-8"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    },
+    {
+      "ID_OE": "OE-6",
+      "Descricao": "Contribuir para a permanência estudantil.",
+      "Ativo": true,
+      "somaRR": 42,
+      "countRiscos": 3,
+      "mediaRR": 14,
+      "nivelRR": "Alto",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-6",
+          "Categoria": "Fraqueza",
+          "Descricao": "Por vezes, alienação de TAEs do administrativo em relação à missão da Unifesp.",
+          "Ativo": true,
+          "OEs": [
+            "OE-4",
+            "OE-6",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-12",
+          "Categoria": "Ameaça",
+          "Descricao": "Contingenciamentos e bloqueios orçamentários.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-6",
+            "OE-8",
+            "OE-9"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    },
+    {
+      "ID_OE": "OE-7",
+      "Descricao": "Mitigar riscos legais.",
+      "Ativo": true,
+      "somaRR": 8,
+      "countRiscos": 1,
+      "mediaRR": 8,
+      "nivelRR": "Moderado",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-1",
+          "Categoria": "Força",
+          "Descricao": "Equipes experientes.",
+          "Ativo": true,
+          "OEs": [
+            "OE-7",
+            "OE-3"
+          ]
+        },
+        {
+          "ID": "SWOT-2",
+          "Categoria": "Fraqueza",
+          "Descricao": "Falta de cultura de mapeamento de processos.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-3",
+          "Categoria": "Fraqueza",
+          "Descricao": "Lentidão na tomada de decisões simples.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-7",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de procedimentos internos e externos bem definidos.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-9",
+          "Categoria": "Oportunidade",
+          "Descricao": "Adotar melhores práticas administrativas de outras universidades federais.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7"
+          ]
+        },
+        {
+          "ID": "SWOT-11",
+          "Categoria": "Ameaça",
+          "Descricao": "Aumento do volume de emendas parlamentares e outros recursos destinados à Unifesp aumentam significativamente as atividades necessárias para aquisições e contratações.",
+          "Ativo": true,
+          "OEs": [
+            "OE-5",
+            "OE-7",
+            "OE-8"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    },
+    {
+      "ID_OE": "OE-8",
+      "Descricao": "Melhorar o ensino, pesquisa, extensão e gestão administrativa.",
+      "Ativo": true,
+      "somaRR": 98,
+      "countRiscos": 12,
+      "mediaRR": 8.166666666666666,
+      "nivelRR": "Moderado",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-3",
+          "Categoria": "Fraqueza",
+          "Descricao": "Lentidão na tomada de decisões simples.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-7",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-6",
+          "Categoria": "Fraqueza",
+          "Descricao": "Por vezes, alienação de TAEs do administrativo em relação à missão da Unifesp.",
+          "Ativo": true,
+          "OEs": [
+            "OE-4",
+            "OE-6",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-8",
+          "Categoria": "Fraqueza",
+          "Descricao": "Falta de integração das divisões, especialmente, após pandemia.",
+          "Ativo": true,
+          "OEs": [
+            "OE-5",
+            "OE-4",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-10",
+          "Categoria": "Ameaça",
+          "Descricao": "Novas leis obrigam órgãos federais a fazer mais com menos pessoal, como a nova Lei de Licitações que aumenta os controles contratuais.",
+          "Ativo": true,
+          "OEs": [
+            "OE-3",
+            "OE-5",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-11",
+          "Categoria": "Ameaça",
+          "Descricao": "Aumento do volume de emendas parlamentares e outros recursos destinados à Unifesp aumentam significativamente as atividades necessárias para aquisições e contratações.",
+          "Ativo": true,
+          "OEs": [
+            "OE-5",
+            "OE-7",
+            "OE-8"
+          ]
+        },
+        {
+          "ID": "SWOT-12",
+          "Categoria": "Ameaça",
+          "Descricao": "Contingenciamentos e bloqueios orçamentários.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-6",
+            "OE-8",
+            "OE-9"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    },
+    {
+      "ID_OE": "OE-9",
+      "Descricao": "Melhorar áreas de convivência.",
+      "Ativo": true,
+      "somaRR": 25,
+      "countRiscos": 3,
+      "mediaRR": 8.333333333333334,
+      "nivelRR": "Moderado",
+      "swotRelacionado": [
+        {
+          "ID": "SWOT-5",
+          "Categoria": "Fraqueza",
+          "Descricao": "Insuficiência de TAEs.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-3",
+            "OE-4",
+            "OE-5",
+            "OE-6",
+            "OE-7",
+            "OE-8",
+            "OE-9"
+          ]
+        },
+        {
+          "ID": "SWOT-12",
+          "Categoria": "Ameaça",
+          "Descricao": "Contingenciamentos e bloqueios orçamentários.",
+          "Ativo": true,
+          "OEs": [
+            "OE-1",
+            "OE-2",
+            "OE-6",
+            "OE-8",
+            "OE-9"
+          ]
+        }
+      ],
+      "mvvRelacionado": []
+    }
+  ],
+  "riscos": [
+    {
+      "ID_Risco": "RIS-1",
+      "Evento_Risco": "Ineficiência operacional.",
+      "P": 4,
+      "C": 3,
+      "RR": 12,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-3"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-2",
+      "Evento_Risco": "Falta de servidores no Departamento Administrativo.",
+      "P": 5,
+      "C": 4,
+      "RR": 20,
+      "Nivel_RR": "Extremo",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-5"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-3",
+      "Evento_Risco": "Descontinuidade de serviço de outsourcing de impressão.",
+      "P": 4,
+      "C": 5,
+      "RR": 20,
+      "Nivel_RR": "Extremo",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-6"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-4",
+      "Evento_Risco": "Descontinuidade de serviço de manutenção predial.",
+      "P": 3,
+      "C": 4,
+      "RR": 12,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-5",
+      "Evento_Risco": "Descontinuidade de seguro predial.",
+      "P": 4,
+      "C": 3,
+      "RR": 12,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-6",
+      "Evento_Risco": "Descontinuidade de serviço de manutenção de elevadores.",
+      "P": 3,
+      "C": 3,
+      "RR": 9,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-7",
+      "Evento_Risco": "Descontinuidade de serviço de Restaurante Universitário.",
+      "P": 4,
+      "C": 4,
+      "RR": 16,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-6"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-8",
+      "Evento_Risco": "Descontinuidade de serviço de limpeza.",
+      "P": 2,
+      "C": 5,
+      "RR": 10,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-9",
+      "Evento_Risco": "Descontinuidade de serviço de vigilância.",
+      "P": 4,
+      "C": 5,
+      "RR": 20,
+      "Nivel_RR": "Extremo",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-10",
+      "Evento_Risco": "Descontinuidade de serviço de monitormento por câmera.",
+      "P": 2,
+      "C": 2,
+      "RR": 4,
+      "Nivel_RR": "Baixo",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-2"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-11",
+      "Evento_Risco": "Descontinuidade de serviço de correios.",
+      "P": 1,
+      "C": 2,
+      "RR": 2,
+      "Nivel_RR": "Baixo",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-12",
+      "Evento_Risco": "Descontinuidade de serviço de ar condicionado.",
+      "P": 3,
+      "C": 5,
+      "RR": 15,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-13",
+      "Evento_Risco": "Descontinuidade de serviço de bombeiro civil.",
+      "P": 2,
+      "C": 2,
+      "RR": 4,
+      "Nivel_RR": "Baixo",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-14",
+      "Evento_Risco": "Descontinuidade de serviço de dedetização.",
+      "P": 2,
+      "C": 5,
+      "RR": 10,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-15",
+      "Evento_Risco": "Descontinuidade de serviço de manutenção de projetores.",
+      "P": 3,
+      "C": 3,
+      "RR": 9,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-16",
+      "Evento_Risco": "Descontinuidade de serviço de jardinagem.",
+      "P": 2,
+      "C": 1,
+      "RR": 2,
+      "Nivel_RR": "Baixo",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-9"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-17",
+      "Evento_Risco": "Descontinuidade de serviço de apoio audiovisual.",
+      "P": 2,
+      "C": 5,
+      "RR": 10,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-18",
+      "Evento_Risco": "Descontinuidade de serviço de transporte Residência Pedagógica.",
+      "P": 3,
+      "C": 2,
+      "RR": 6,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-6"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-19",
+      "Evento_Risco": "Descontinuidade de serviço de transporte de servidores.",
+      "P": 2,
+      "C": 3,
+      "RR": 6,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-20",
+      "Evento_Risco": "Descontinuidade de serviço de transporte de carga.",
+      "P": 2,
+      "C": 2,
+      "RR": 4,
+      "Nivel_RR": "Baixo",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-21",
+      "Evento_Risco": "Descontinuidade de serviço de cantina.",
+      "P": 2,
+      "C": 4,
+      "RR": 8,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-9"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-22",
+      "Evento_Risco": "Descontinuidade de contrato de energia elétrica.",
+      "P": 1,
+      "C": 5,
+      "RR": 5,
+      "Nivel_RR": "Baixo",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-23",
+      "Evento_Risco": "Descontinuidade de contrato de fornecimento de água.",
+      "P": 1,
+      "C": 5,
+      "RR": 5,
+      "Nivel_RR": "Baixo",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-24",
+      "Evento_Risco": "Descontinuidade de serviço de editoração de e-books.",
+      "P": 2,
+      "C": 3,
+      "RR": 6,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-25",
+      "Evento_Risco": "Descontinuidade de serviço de editoração de revistas.",
+      "P": 2,
+      "C": 3,
+      "RR": 6,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-26",
+      "Evento_Risco": "Descontinuidade de serviço de tradução, revisão e formatação de textos acadêmicos.",
+      "P": 2,
+      "C": 3,
+      "RR": 6,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-27",
+      "Evento_Risco": "Insuficiência de mapeamento de fluxos e processos.",
+      "P": 4,
+      "C": 3,
+      "RR": 12,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-3"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-28",
+      "Evento_Risco": "Falta de AVCB.",
+      "P": 4,
+      "C": 5,
+      "RR": 20,
+      "Nivel_RR": "Extremo",
+      "Resposta_Risco": "Evitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-29",
+      "Evento_Risco": "Roubo ou furto de bens.",
+      "P": 3,
+      "C": 2,
+      "RR": 6,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-2"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-30",
+      "Evento_Risco": "Danos à saúde, acidentes decorrentes de infraestrutura inadequada, falta de sinalização.",
+      "P": 3,
+      "C": 5,
+      "RR": 15,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-1"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-31",
+      "Evento_Risco": "Contenciosos trabalhistas",
+      "P": 4,
+      "C": 2,
+      "RR": 8,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-7"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-32",
+      "Evento_Risco": "Perda de dados institucionais.",
+      "P": 2,
+      "C": 2,
+      "RR": 4,
+      "Nivel_RR": "Baixo",
+      "Resposta_Risco": "Aceitar",
+      "Ativo": true,
+      "OEs": [
+        "OE-2"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-33",
+      "Evento_Risco": "Desbalanceamento de carga de trabalho entre áreas.",
+      "P": 4,
+      "C": 3,
+      "RR": 12,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-5"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-34",
+      "Evento_Risco": "Falta de comunicação ou perda de credibilidade",
+      "P": 2,
+      "C": 5,
+      "RR": 10,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-4"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-35",
+      "Evento_Risco": "Falta de espaços de convivência para a comunidade.",
+      "P": 3,
+      "C": 5,
+      "RR": 15,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-9"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-36",
+      "Evento_Risco": "Uso inadequado dos equipamentos e infraestrutura.",
+      "P": 4,
+      "C": 3,
+      "RR": 12,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-2"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-37",
+      "Evento_Risco": "Precarização de atividades acadêmicas por falta ou obsolescência de equipamentos ou infraestrutura.",
+      "P": 4,
+      "C": 5,
+      "RR": 20,
+      "Nivel_RR": "Extremo",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-38",
+      "Evento_Risco": "Precarização de atividades administrativas por falta ou obsolescência de equipamentos ou infraestrutura.",
+      "P": 4,
+      "C": 3,
+      "RR": 12,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-39",
+      "Evento_Risco": "Alienação de TAEs do administrativo em relação à missão da Unifesp.",
+      "P": 4,
+      "C": 3,
+      "RR": 12,
+      "Nivel_RR": "Alto",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-8"
+      ]
+    },
+    {
+      "ID_Risco": "RIS-40",
+      "Evento_Risco": "Alta rotatividade de terceirizados.",
+      "P": 4,
+      "C": 2,
+      "RR": 8,
+      "Nivel_RR": "Moderado",
+      "Resposta_Risco": "Reduzir",
+      "Ativo": true,
+      "OEs": [
+        "OE-5"
+      ]
+    }
+  ],
+  "planoAcao": [
+    {
+      "ID_Acao": "ACAO-1",
+      "ID_Risco": "RIS-1",
+      "Acao": "Aperfeiçoar fluxos.",
+      "Status": "Ação contínua",
+      "Ano_Acao": 2023,
+      "Ativo": ""
+    }
+  ],
+  "historico": [
+    {
+      "ID_Historico": "HIST-1",
+      "ID_Acao": "ACAO-1",
+      "Data": "2023-02-23",
+      "Detalhamento": "Redefinição de fluxo de solicitação de mouses e teclados. Passam a ser solicitados via almoxarifado. Anteriormente, os pedidos eram feitos para a DTI. Como se trata de produtos plug & play não há necessidade de ocupar servidores da TI com essas demandas. ",
+      "Status": "Concluído",
+      "Ativo": ""
+    }
+  ]
+}
