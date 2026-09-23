@@ -1,5 +1,5 @@
 {
-  "atualizadoEm": "2026-09-23T17:33:01.049Z",
+  "atualizadoEm": "2026-09-23T17:45:17.294Z",
   "eixosPdi": [
     {
       "ID": "EIXO-1",
@@ -34,7 +34,13 @@
       "Descricao": "Gerir de forma ética e eficiente os recursos da Unifesp, assegurando uma administração transparente e comprometida, para viabilizar a excelência acadêmica e contribuir para o desenvolvimento social, econômico e ambiental do país.",
       "Ativo": true,
       "EixoPDI": "",
-      "eixoPdiRelacionado": null
+      "eixosPdiRelacionados": [
+        {
+          "ID": "EIXO-5",
+          "Descricao": "2026-2030: Desenvolvimento Institucional e Gestão Eficiente",
+          "Ativo": true
+        }
+      ]
     },
     {
       "ID": "MVV-2",
@@ -42,7 +48,28 @@
       "Descricao": "Ser referência em gestão universitária, promovendo a inovação, a inclusão, e a sustentabilidade, alinhada com os valores de sustentabilidade e responsabilidade social da Unifesp.",
       "Ativo": true,
       "EixoPDI": "",
-      "eixoPdiRelacionado": null
+      "eixosPdiRelacionados": [
+        {
+          "ID": "EIXO-1",
+          "Descricao": "2026-2030: Excelência acadêmico-assistencial e inovação",
+          "Ativo": true
+        },
+        {
+          "ID": "EIXO-2",
+          "Descricao": "2026-2030: Inclusão, Diversidade e Acessibilidade",
+          "Ativo": true
+        },
+        {
+          "ID": "EIXO-3",
+          "Descricao": "2026-2030: Sustentabilidade e Responsabilidade Social",
+          "Ativo": true
+        },
+        {
+          "ID": "EIXO-5",
+          "Descricao": "2026-2030: Desenvolvimento Institucional e Gestão Eficiente",
+          "Ativo": true
+        }
+      ]
     },
     {
       "ID": "MVV-3",
@@ -50,7 +77,13 @@
       "Descricao": "Ética e Transparência: Atuar com integridade e transparência em todas as práticas administrativas.",
       "Ativo": true,
       "EixoPDI": "",
-      "eixoPdiRelacionado": null
+      "eixosPdiRelacionados": [
+        {
+          "ID": "EIXO-5",
+          "Descricao": "2026-2030: Desenvolvimento Institucional e Gestão Eficiente",
+          "Ativo": true
+        }
+      ]
     },
     {
       "ID": "MVV-4",
@@ -58,7 +91,18 @@
       "Descricao": "Colaboração e Empatia: Fomentar uma cultura de cooperação, solidariedade e empatia.",
       "Ativo": true,
       "EixoPDI": "",
-      "eixoPdiRelacionado": null
+      "eixosPdiRelacionados": [
+        {
+          "ID": "EIXO-2",
+          "Descricao": "2026-2030: Inclusão, Diversidade e Acessibilidade",
+          "Ativo": true
+        },
+        {
+          "ID": "EIXO-5",
+          "Descricao": "2026-2030: Desenvolvimento Institucional e Gestão Eficiente",
+          "Ativo": true
+        }
+      ]
     },
     {
       "ID": "MVV-5",
@@ -66,7 +110,13 @@
       "Descricao": "Excelência: Buscar a excelência na prestação de serviços administrativos.",
       "Ativo": true,
       "EixoPDI": "",
-      "eixoPdiRelacionado": null
+      "eixosPdiRelacionados": [
+        {
+          "ID": "EIXO-5",
+          "Descricao": "2026-2030: Desenvolvimento Institucional e Gestão Eficiente",
+          "Ativo": true
+        }
+      ]
     },
     {
       "ID": "MVV-6",
@@ -74,7 +124,13 @@
       "Descricao": "Proatividade: Fomentar a cultura de se antecipar aos problemas.",
       "Ativo": true,
       "EixoPDI": "",
-      "eixoPdiRelacionado": null
+      "eixosPdiRelacionados": [
+        {
+          "ID": "EIXO-5",
+          "Descricao": "2026-2030: Desenvolvimento Institucional e Gestão Eficiente",
+          "Ativo": true
+        }
+      ]
     }
   ],
   "swot": [
